@@ -1,0 +1,57 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class HangmanOptimized {
+    public static void main(String[] args) {
+    String [] ar = {"cat", "dogs", "pizza", "stocks", "station"};
+    int str = new Random().nextInt(ar.length); 
+    
+      int b = ar[str].length();
+      int xy = 0;
+       Scanner a = new Scanner(System.in);
+      while(b > 0){ 
+        
+    System.out.println("Random String selected has " + b + " characters.");  
+    System.out.println("How many characters would you like to enter?");
+        int chars = a.nextInt();
+        if(chars > 1){
+          System.out.println("Enter a some characters you think are part of the string.");
+          String q = a.nextLine();
+          for(int i = 0; i < b-q.length(); i++){
+            if(ar[str].substring(i, q.length()-1).equals(q)){
+              ar[str].replace(q.substring(i, q.length()-1), "");
+              xy++;
+              if(b > 0 && xy > 1){
+                System.out.println("You guessed correctly!");
+                continue;
+              }
+              
+              else{
+                System.out.println("Oh well. You guessed incorrectly. Try again!");
+                break;
+                }
+             }
+          }          
+          }
+        else if(chars == 1){
+        System.out.println("Enter a character you think is part of the string.");
+        char c = a.next().charAt(0);
+        for(int j = 0; j < b - 1; j++){
+          if(ar[str].charAt(j) == c){
+            System.out.println("You guessed correctly!");
+            continue;
+        }
+          else{
+            System.out.println("You guess wrong. Try again.");
+            continue;
+        }
+     }
+        if(b == 0 || b < 0){
+          System.out.println("You finished the string!");
+          break;
+}
+  }
+      }
+    }
+}
+
