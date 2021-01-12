@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Hangman{
+  public static void main(String[] args){
+    String a1 = "cat";
+    String a2 = "dogs";
+    String a3 = "pizza";
+    String a4 = "stocks";
+    String a5 = "station";
+    
+    String [] ar = {"cat", "dogs", "pizza", "stocks", "station"};
+    int str = new Random().nextInt(ar.length); 
+    System.out.println("Random String selected has " + ar[str].length() + " characters."); 
+    
+    System.out.println("Enter a character you think is part of the string."); 
+    Scanner a = new Scanner(System.in);
+    char var = a.nextLine().charAt(0);
+    
+    String can = "";
+    
+    for(int i = 0; i < ar[str].length()-1; i++){
+      if(var == ar[str].charAt(i)){
+        System.out.println("You guessed correctly!");
+          can = can + "" + ar[str].replace(var, ' ');
+        System.out.println("Enter another character in the string.");
+        continue;
+    }
+      else{
+       System.out.println("You guessed wrong. Your hint is the word starts with " + ar[str].charAt(0)); 
+       break;
+      }
+    }
+  }
+}
+    
+    
+    
+    
+  
